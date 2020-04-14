@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProfilesEditStageController">
+   <children>
+      <MenuBar>
+         <menus>
+            <Menu mnemonicParsing="false" text="Home">
+               <items>
+                  <MenuItem fx:id="miOpenEngineCalculator" mnemonicParsing="false" onAction="#OpenEngineCalculator" text="Open Engine Calculator" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="miExit" mnemonicParsing="false" onAction="#OnExit" text="Exit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="File" visible="false">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Open" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Settings" />
+         </menus>
+      </MenuBar>
+      <AnchorPane prefHeight="455.0" prefWidth="400.0">
+         <children>
+            <TextField fx:id="tfName" layoutX="379.0" layoutY="21.0" onKeyTyped="#nameOnChange" AnchorPane.topAnchor="21.0" />
+            <TextField fx:id="tfVdc" layoutX="379.0" layoutY="56.0" onKeyTyped="#vdcOnChange" AnchorPane.topAnchor="56.0" />
+            <TextField fx:id="tfCrs" layoutX="379.0" layoutY="91.0" onKeyTyped="#crsOnChange" AnchorPane.topAnchor="91.0" />
+            <TextField fx:id="tfCrt" layoutX="379.0" layoutY="126.0" onKeyTyped="#crtOnChange" AnchorPane.topAnchor="126.0" />
+            <TextField fx:id="tfCc" layoutX="379.0" layoutY="161.0" onKeyTyped="#ccOnChange" AnchorPane.topAnchor="161.0" />
+            <TextField fx:id="tfSt" layoutX="379.0" layoutY="196.0" onKeyTyped="#stOnChange" AnchorPane.topAnchor="196.0" />
+            <TextField fx:id="tfSc" layoutX="379.0" layoutY="231.0" onKeyTyped="#scOnChange" AnchorPane.topAnchor="231.0" />
+            <TextField fx:id="tfNls" layoutX="379.0" layoutY="266.0" onKeyTyped="#nlsOnChange" AnchorPane.topAnchor="266.0" />
+            <TextField fx:id="tfNlc" layoutX="379.0" layoutY="301.0" onKeyTyped="#nlcOnChange" AnchorPane.topAnchor="301.0" />
+            <TextField fx:id="tfRi" layoutX="379.0" layoutY="336.0" onKeyTyped="#riOnChange" AnchorPane.topAnchor="336.0" />
+            <TextField fx:id="tfWoe" layoutX="379.0" layoutY="371.0" onKeyTyped="#woeOnChange" AnchorPane.topAnchor="371.0" />
+            <Button fx:id="Change" disable="true" layoutX="211.0" layoutY="407.0" mnemonicParsing="false" onAction="#OnChange" prefHeight="26.0" prefWidth="149.0" text="Change" />
+            <Button fx:id="btnClear" disable="true" layoutX="542.0" layoutY="408.0" mnemonicParsing="false" onAction="#OnClear" text="Clear" />
+            <Text layoutX="210.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name / Model" wrappingWidth="149.0" AnchorPane.leftAnchor="210.0" />
+            <Text layoutX="211.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rated voltage VDC" wrappingWidth="149.0" AnchorPane.leftAnchor="210.0" />
+            <Text layoutX="210.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Continuous rated speed rpm" wrappingWidth="152.0" AnchorPane.leftAnchor="210.0" />
+            <Text layoutX="210.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Continuous rated torque Ncm" wrappingWidth="162.0" AnchorPane.leftAnchor="210.0" />
+            <Text layoutX="211.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Continuous current A" wrappingWidth="120.0" AnchorPane.leftAnchor="210.0" />
+            <Text layoutX="210.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting torque Ncm" wrappingWidth="120.0" AnchorPane.leftAnchor="210.0" />
+            <Text layoutX="210.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting current A" wrappingWidth="102.0" AnchorPane.leftAnchor="210.0" />
+            <Text layoutX="207.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No load speed rpm" wrappingWidth="108.0" AnchorPane.leftAnchor="210.0" />
+            <Text layoutX="207.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No load current A" wrappingWidth="114.0" AnchorPane.leftAnchor="210.0" />
+            <Text layoutX="210.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rotor inertial gcm²" wrappingWidth="108.0" AnchorPane.leftAnchor="210.0" />
+            <Text layoutX="210.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight of engine g" wrappingWidth="114.0" AnchorPane.leftAnchor="210.0" />
+            <Button fx:id="btnRemove" disable="true" layoutX="378.0" layoutY="407.0" mnemonicParsing="false" onAction="#OnRemove" prefHeight="26.0" prefWidth="149.0" text="Remove" />
+            <ChoiceBox fx:id="chList" layoutX="23.0" layoutY="21.0" onKeyTyped="#OnTyped" onMouseClicked="#OnClicked" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
