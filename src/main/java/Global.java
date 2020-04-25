@@ -1,5 +1,6 @@
 import javafx.fxml.FXMLLoader;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -9,19 +10,20 @@ public class Global {
         FXMLLoader loader = new FXMLLoader();
         switch (sceneName){
             case "ProfilesStage":
-                loader.setLocation(new URL("file:///C:/Users/kryst/git/AdvancedCalculator/src/main/java/ProfilesStage.fxml"));
+
+                loader.setLocation(new File("src/main/java/ProfilesStage.fxml").toURI().toURL());
                 Frame.changeScene(loader);
                 break;
             case "HomeStage":
-                loader.setLocation(new URL("file:///C:/Users/kryst/git/AdvancedCalculator/src/main/java/HomeStage.fxml"));
+                loader.setLocation(new File("src/main/java/HomeStage.fxml").toURI().toURL());
                 Frame.changeScene(loader);
             break;
             case "EngineCalculatorStage":
-                loader.setLocation(new URL("file:///C:/Users/kryst/git/AdvancedCalculator/src/main/java/EngineCalculatorStage.fxml"));
+                loader.setLocation(new File("src/main/java/EngineCalculatorStage.fxml").toURI().toURL());
                 Frame.changeScene(loader);
                 break;
             case "ProfilesEditStage":
-                loader.setLocation(new URL("file:///C:/Users/kryst/git/AdvancedCalculator/src/main/java/ProfilesEditStage.fxml"));
+                loader.setLocation(new File("src/main/java/ProfilesEditStage.fxml").toURI().toURL());
                 Frame.changeScene(loader);
                 break;
         }

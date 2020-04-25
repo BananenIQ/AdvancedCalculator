@@ -48,7 +48,12 @@ public class CalculatorStageController {
     @FXML
     public TextField tfPvM;
 
-    ArrayList<TextField> tFList = new ArrayList<TextField>();
+    @FXML
+    public void initialize() {
+        update();
+    }
+
+    ArrayList<TextField> tFList = new ArrayList<>();
 
     public void Onclear(ActionEvent actionEvent) {
         update();
@@ -85,7 +90,7 @@ public class CalculatorStageController {
                 w.setBlockTextFields(true);
             }
         }
-        if (w.getBlockStatus() == false && tF.getText().length() >= 1) {
+        if (!w.getBlockStatus() && tF.getText().length() >= 1) {
             w.addTextField(tF);
         }
     }

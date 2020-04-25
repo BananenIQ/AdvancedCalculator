@@ -24,6 +24,7 @@ public class Main extends Application {
         File file = new File("profiles.json");
         if(file.exists()) {
             readJson();
+
         }
     }
 
@@ -34,12 +35,11 @@ public class Main extends Application {
         try(FileReader fileReader = new FileReader("profiles.json")){
             JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
             JSONArray jsonArray = (JSONArray) jsonObject.get("profiles");
-            Iterator<JSONObject> iterator = jsonArray.iterator();
-            while(iterator.hasNext()){
+            for (JSONObject value : (Iterable<JSONObject>) jsonArray) {
                 Profile profile = new Profile();
                 ProfileList profileList = new ProfileList();
 
-                JSONObject object = (JSONObject) jsonParser.parse(iterator.next().toJSONString());
+                JSONObject object = (JSONObject) jsonParser.parse(value.toJSONString());
 
                 profile.setName((String) object.get("name"));
                 profile.setVdc((Double) object.get("vdc"));

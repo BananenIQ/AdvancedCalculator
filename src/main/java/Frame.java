@@ -3,6 +3,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,11 +19,11 @@ public class Frame {
 
     public Frame(Stage homeStage) throws IOException {
 
-        this.homeStage = homeStage;
+        Frame.homeStage = homeStage;
 
         FXMLLoader loader = new FXMLLoader();
 
-        loader.setLocation(new URL("file:///C:/Users/kryst/git/AdvancedCalculator/src/main/java/HomeStage.fxml"));
+        loader.setLocation(new File("src/main/java/HomeStage.fxml").toURI().toURL());
 
         changeScene(loader);
 
@@ -32,7 +33,7 @@ public class Frame {
     public static void changeScene(FXMLLoader loader) throws IOException {
 
 
-        VBox vbox = loader.<VBox>load();
+        VBox vbox = loader.load();
 
         Scene scene = new Scene(vbox);
 

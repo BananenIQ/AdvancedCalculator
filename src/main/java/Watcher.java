@@ -1,5 +1,10 @@
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.util.HashMap;
 
 public class Watcher {
@@ -92,18 +97,20 @@ public class Watcher {
 // Verlustleistung muss aus Profil berechnet werden
 // Man braucht Motor Profile: Um Ampere und andere Einheiten zu speichern
 
-    static HashMap<String, TextField> tfList = new HashMap<String, TextField>();
+    static HashMap<String, TextField> tfList = new HashMap<>();
+
     public void URI(TextField tF) {
+
         tfList.put(tF.getId(),tF);
-        if(tfList.containsKey("tfU") && tfList.containsKey("tfI")){
-
-        }
-        if(tfList.containsKey("tfU") && tfList.containsKey("tfR")){
-
-        }
-        if(tfList.containsKey("tfI") && tfList.containsKey("tfR")){
-
-        }
+//        if(tfList.containsKey("tfU") && tfList.containsKey("tfI")){
+//
+//        }
+//        if(tfList.containsKey("tfU") && tfList.containsKey("tfR")){
+//
+//        }
+//        if(tfList.containsKey("tfI") && tfList.containsKey("tfR")){
+//
+//        }
     }
 
     public void PowerMotor(TextField tF) {
