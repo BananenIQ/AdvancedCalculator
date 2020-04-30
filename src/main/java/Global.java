@@ -1,4 +1,5 @@
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,24 +8,24 @@ import java.net.URL;
 public class Global {
 
     public static void open(String sceneName) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+        Parent pane;
         switch (sceneName){
+
             case "ProfilesStage":
-                loader.setLocation(new File("src/main/java/ProfilesStage.fxml").toURI().toURL());
-                Frame.changeScene(loader);
+                pane = FXMLLoader.load(Global.class.getResource("ProfilesStage.fxml"));
+                Frame.changeScene(pane);
                 break;
             case "HomeStage":
-                loader.setLocation(new File("src/main/java/HomeStage.fxml").toURI().toURL());
-                Frame.changeScene(loader);
+                pane = FXMLLoader.load(Global.class.getResource("HomeStage.fxml"));
+                Frame.changeScene(pane);
             break;
             case "EngineCalculatorStage":
-                loader.setLocation(new File("src/main/java/EngineCalculatorStage.fxml").toURI().toURL());
-
-                Frame.changeScene(loader);
+                pane = FXMLLoader.load(Global.class.getResource("EngineCalculatorStage.fxml"));
+                Frame.changeScene(pane);
                 break;
             case "ProfilesEditStage":
-                loader.setLocation(new File("src/main/java/ProfilesEditStage.fxml").toURI().toURL());
-                Frame.changeScene(loader);
+                pane = FXMLLoader.load(Global.class.getResource("ProfilesEditStage.fxml"));
+                Frame.changeScene(pane);
                 break;
         }
 

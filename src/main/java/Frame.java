@@ -1,12 +1,10 @@
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+
 
 public class Frame {
 
@@ -21,28 +19,19 @@ public class Frame {
 
         Frame.homeStage = homeStage;
 
-        URL location = getClass().getResource("HomeStage.fxml");
+        Parent pane = FXMLLoader.load(getClass().getResource("HomeStage.fxml"));
 
-        FXMLLoader loader = new FXMLLoader();
-
-        loader.setLocation(location);
-
-        changeScene(loader);
-
-
-
+        changeScene(pane);
     }
-    public static void changeScene(FXMLLoader loader) throws IOException {
+    public static void changeScene(Parent pane) throws IOException {
 
-
-        VBox vbox = loader.load();
+        VBox vbox = new VBox(pane);
 
         Scene scene = new Scene(vbox);
 
+
         homeStage.setResizable(false);
-
         homeStage.setScene(scene);
-
         homeStage.show();
     }
 

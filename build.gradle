@@ -5,12 +5,12 @@ plugins {
 }
 
 
-mainClassName = 'info.kofler.MainApp'
+mainClassName = 'Main'
 
-group 'org.example'
+group 'main.java'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()
@@ -30,7 +30,7 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
-mainClassName = "Main"
+
 
 jar {
     manifest {
