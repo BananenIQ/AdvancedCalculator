@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-
 public class CalculatorStageController {
 
     @FXML
@@ -57,7 +56,7 @@ public class CalculatorStageController {
 
     public void Onclear(ActionEvent actionEvent) {
         update();
-        for(TextField tF : tFList){
+        for (TextField tF : tFList) {
             tF.clear();
             tF.setStyle("");
         }
@@ -65,12 +64,13 @@ public class CalculatorStageController {
 
     Watcher w = new Watcher();
 
-    public void update(){
-        if(tFList.isEmpty()){
-            tFList.addAll(Arrays.asList(tfnM,tfMM,tfPab,tfPvmech,tfPvel,tfi,tfEtaG,tfnG,tfMG,tfPG,tfEtaM,tfR,tfU,tfPzu,tfI,tfPvG,tfPvM));
+    public void update() {
+        if (tFList.isEmpty()) {
+            tFList.addAll(Arrays.asList(tfnM, tfMM, tfPab, tfPvmech, tfPvel, tfi, tfEtaG, tfnG, tfMG, tfPG, tfEtaM, tfR, tfU, tfPzu, tfI, tfPvG, tfPvM));
         }
     }
-    public void update(TextField tF){
+
+    public void update(TextField tF) {
         update();
 
         tF.setStyle("");
@@ -147,7 +147,7 @@ public class CalculatorStageController {
         update(tfR);
     }
 
-    public void UOnChange(KeyEvent keyEvent) {
+    public void OnChange(KeyEvent keyEvent) {
         update(tfU);
     }
 

@@ -21,9 +21,11 @@ public class Frame {
 
         Frame.homeStage = homeStage;
 
+        URL location = getClass().getResource("HomeStage.fxml");
+
         FXMLLoader loader = new FXMLLoader();
 
-        loader.setLocation(new File("src/main/java/HomeStage.fxml").toURI().toURL());
+        loader.setLocation(location);
 
         changeScene(loader);
 

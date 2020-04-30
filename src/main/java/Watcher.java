@@ -101,7 +101,10 @@ public class Watcher {
 
     public void URI(TextField tF) {
 
+
+
         tfList.put(tF.getId(),tF);
+
 //        if(tfList.containsKey("tfU") && tfList.containsKey("tfI")){
 //
 //        }

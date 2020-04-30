@@ -10,7 +10,6 @@ public class Global {
         FXMLLoader loader = new FXMLLoader();
         switch (sceneName){
             case "ProfilesStage":
-
                 loader.setLocation(new File("src/main/java/ProfilesStage.fxml").toURI().toURL());
                 Frame.changeScene(loader);
                 break;
@@ -20,6 +19,7 @@ public class Global {
             break;
             case "EngineCalculatorStage":
                 loader.setLocation(new File("src/main/java/EngineCalculatorStage.fxml").toURI().toURL());
+
                 Frame.changeScene(loader);
                 break;
             case "ProfilesEditStage":

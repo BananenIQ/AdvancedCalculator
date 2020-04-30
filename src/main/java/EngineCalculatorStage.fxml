@@ -49,7 +49,7 @@
             <Line endY="1.0" layoutX="827.0" layoutY="148.0" startY="-50.0" />
             <ChoiceBox fx:id="cbProfiles" layoutX="292.0" layoutY="173.0" prefWidth="150.0" />
             <TextField fx:id="tfPzu" layoutX="85.0" layoutY="156.0" onKeyTyped="#PzuOnChange" />
-            <TextField fx:id="tfU" layoutX="85.0" layoutY="192.0" onKeyTyped="#UOnChange" />
+            <TextField fx:id="tfU" layoutX="85.0" layoutY="192.0" onKeyTyped="#OnChange" />
             <TextField fx:id="tfI" layoutX="85.0" layoutY="230.0" onKeyTyped="#IOnChange" />
             <TextField fx:id="tfR" layoutX="85.0" layoutY="267.0" onKeyTyped="#ROnChange" />
             <TextField fx:id="tfEtaM" layoutX="292.0" layoutY="319.0" onKeyTyped="#EtaMOnChange" />

@@ -7,11 +7,8 @@ import org.json.simple.parser.ParseException;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Iterator;
 
 public class Main extends Application {
-
-
 
     public static void main(String[]args){
         launch(args);
@@ -24,7 +21,6 @@ public class Main extends Application {
         File file = new File("profiles.json");
         if(file.exists()) {
             readJson();
-
         }
     }
 
