@@ -4,6 +4,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -14,6 +15,7 @@ public class Watcher {
     public Watcher() {
 
     }
+
     public Watcher(Stage homeStage) {
 
     }
@@ -22,10 +24,9 @@ public class Watcher {
         block = bl;
     }
 
-    public boolean getBlockStatus(){
+    public boolean getBlockStatus() {
         return block;
     }
-
 
 
     public void addTextField(TextField tF) {
@@ -101,9 +102,15 @@ public class Watcher {
 
     public void URI(TextField tF) {
 
-
-
-        tfList.put(tF.getId(),tF);
+        FXMLLoader loader = new FXMLLoader();
+        try {
+            loader.setLocation(Watcher.class.getResource("EngineCalculatorStage.fxml"));
+            CalculatorStageController controller = loader.getController();
+            controller.c(true);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+            tfList.put(tF.getId(), tF);
 
 //        if(tfList.containsKey("tfU") && tfList.containsKey("tfI")){
 //

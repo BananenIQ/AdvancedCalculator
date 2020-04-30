@@ -5,73 +5,69 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CalculatorStageController">
-   <children>
-      <MenuBar prefHeight="0.0" prefWidth="1200.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Home">
-               <items>
-                  <MenuItem fx:id="miExit" mnemonicParsing="false" onAction="#OnExit" text="Exit" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem fx:id="miNew" mnemonicParsing="false" onAction="#newFileOnAction" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Open" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Engine Profile Manager">
-               <items>
-                  <MenuItem fx:id="miCreateProfile" mnemonicParsing="false" onAction="#OnCreateProfile" text="Create Profile" />
-                  <MenuItem fx:id="miEditProfiles" mnemonicParsing="false" onAction="#OnEdit" text="Edit Profile" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Delete Profile" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Settings" />
-         </menus>
-      </MenuBar>
-      <AnchorPane prefHeight="472.0" prefWidth="1200.0">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="150.0" layoutX="247.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="240.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="713.0" AnchorPane.topAnchor="150.0" />
-            <Label layoutX="315.0" layoutY="200.0" text="Engine" textAlignment="CENTER">
-               <font>
-                  <Font size="34.0" />
-               </font>
-            </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="150.0" layoutX="707.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="240.0" AnchorPane.leftAnchor="707.0" AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="150.0" />
-            <Button fx:id="btnClean" layoutX="1083.0" layoutY="414.0" mnemonicParsing="false" onAction="#Onclear" prefHeight="43.0" prefWidth="102.0" text="Clean" />
-            <Line endX="110.0" endY="-9.0" layoutX="597.0" layoutY="234.0" startX="-110.0" startY="-9.0" />
-            <Line layoutX="367.0" layoutY="149.0" startY="-50.0" />
-            <Line endY="1.0" layoutX="827.0" layoutY="148.0" startY="-50.0" />
-            <ChoiceBox fx:id="cbProfiles" layoutX="292.0" layoutY="173.0" prefWidth="150.0" />
-            <TextField fx:id="tfPzu" layoutX="85.0" layoutY="156.0" onKeyTyped="#PzuOnChange" />
-            <TextField fx:id="tfU" layoutX="85.0" layoutY="192.0" onKeyTyped="#OnChange" />
-            <TextField fx:id="tfI" layoutX="85.0" layoutY="230.0" onKeyTyped="#IOnChange" />
-            <TextField fx:id="tfR" layoutX="85.0" layoutY="267.0" onKeyTyped="#ROnChange" />
-            <TextField fx:id="tfEtaM" layoutX="292.0" layoutY="319.0" onKeyTyped="#EtaMOnChange" />
-            <TextField fx:id="tfPvM" layoutX="293.0" layoutY="73.0" onKeyTyped="#PvMOnChange" />
-            <TextField fx:id="tfPvel" layoutX="181.0" layoutY="27.0" onKeyTyped="#PvelOnChange" />
-            <TextField fx:id="tfPvmech" layoutX="412.0" layoutY="27.0" onKeyTyped="#PvmechOnChange" />
-            <TextField fx:id="tfPab" layoutX="523.0" layoutY="186.0" onKeyTyped="#PabOnChange" />
-            <TextField fx:id="tfMM" layoutX="523.0" layoutY="250.0" onKeyTyped="#MMOnChange" />
-            <TextField fx:id="tfnM" layoutX="523.0" layoutY="287.0" onKeyTyped="#nMOnChange" />
-            <TextField fx:id="tfPvG" layoutX="752.0" layoutY="73.0" onKeyTyped="#PvGOnChange" />
-            <TextField fx:id="tfEtaG" layoutX="752.0" layoutY="319.0" onKeyTyped="#EtaGOnChange" />
-            <TextField fx:id="tfi" layoutX="752.0" layoutY="353.0" onKeyTyped="#iOnChange" />
-            <TextField fx:id="tfPG" layoutX="966.0" layoutY="174.0" onKeyTyped="#PGOnChange" />
-            <TextField fx:id="tfMG" layoutX="966.0" layoutY="210.0" onKeyTyped="#MGOnChange" />
-            <TextField fx:id="tfnG" layoutX="966.0" layoutY="248.0" onKeyTyped="#nGOnChange" />
-            <Label layoutX="792.0" layoutY="199.0" text="Gear" textAlignment="CENTER">
-               <font>
-                  <Font size="34.0" />
-               </font>
-            </Label>
-            <Slider fx:id="slider" layoutX="947.0" layoutY="429.0" prefHeight="14.0" prefWidth="120.0" />
-         </children>
-      </AnchorPane>
-   </children>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+      prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="CalculatorStageController">
+   <MenuBar prefHeight="0.0" prefWidth="1200.0">
+      <Menu mnemonicParsing="false" text="Home">
+         <MenuItem fx:id="miExit" mnemonicParsing="false" onAction="#OnExit" text="Exit"/>
+      </Menu>
+      <Menu mnemonicParsing="false" text="File">
+         <MenuItem fx:id="miNew" mnemonicParsing="false" onAction="#newFileOnAction" text="New"/>
+         <MenuItem mnemonicParsing="false" text="Open"/>
+         <MenuItem mnemonicParsing="false" text="Save"/>
+         <SeparatorMenuItem mnemonicParsing="false"/>
+         <MenuItem mnemonicParsing="false" text="Delete"/>
+      </Menu>
+      <Menu mnemonicParsing="false" text="Engine Profile Manager">
+         <MenuItem fx:id="miCreateProfile" mnemonicParsing="false" onAction="#OnCreateProfile"
+                   text="Create Profile"/>
+         <MenuItem fx:id="miEditProfiles" mnemonicParsing="false" onAction="#OnEdit" text="Edit Profile"/>
+         <SeparatorMenuItem mnemonicParsing="false"/>
+         <MenuItem mnemonicParsing="false" text="Delete Profile"/>
+      </Menu>
+      <Menu mnemonicParsing="false" text="Settings"/>
+   </MenuBar>
+   <AnchorPane prefHeight="472.0" prefWidth="1200.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="150.0" layoutX="247.0" layoutY="150.0"
+                 stroke="BLACK" strokeType="INSIDE" width="240.0" AnchorPane.leftAnchor="247.0"
+                 AnchorPane.rightAnchor="713.0" AnchorPane.topAnchor="150.0"/>
+      <Label layoutX="315.0" layoutY="200.0" text="Engine" textAlignment="CENTER">
+         <font>
+            <Font size="34.0"/>
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="150.0" layoutX="707.0" layoutY="150.0"
+                 stroke="BLACK" strokeType="INSIDE" width="240.0" AnchorPane.leftAnchor="707.0"
+                 AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="150.0"/>
+      <Button fx:id="btnClean" layoutX="1083.0" layoutY="414.0" mnemonicParsing="false" onAction="#OnClear"
+              prefHeight="43.0" prefWidth="102.0" text="Clean"/>
+      <Line endX="110.0" endY="-9.0" layoutX="597.0" layoutY="234.0" startX="-110.0" startY="-9.0"/>
+      <Line layoutX="367.0" layoutY="149.0" startY="-50.0"/>
+      <Line endY="1.0" layoutX="827.0" layoutY="148.0" startY="-50.0"/>
+      <ChoiceBox fx:id="cbProfiles" layoutX="292.0" layoutY="173.0" prefWidth="150.0"/>
+      <TextField fx:id="tfPzu" layoutX="85.0" layoutY="156.0" onKeyTyped="#PzuOnChange"/>
+      <TextField fx:id="tfU" layoutX="85.0" layoutY="192.0" onKeyTyped="#OnChange"/>
+      <TextField fx:id="tfI" layoutX="85.0" layoutY="230.0" onKeyTyped="#IOnChange"/>
+      <TextField fx:id="tfR" layoutX="85.0" layoutY="267.0" onKeyTyped="#ROnChange"/>
+      <TextField fx:id="tfEtaM" layoutX="292.0" layoutY="319.0" onKeyTyped="#EtaMOnChange"/>
+      <TextField fx:id="tfPvM" layoutX="293.0" layoutY="73.0" onKeyTyped="#PvMOnChange"/>
+      <TextField fx:id="tfPvel" layoutX="181.0" layoutY="27.0" onKeyTyped="#PvelOnChange"/>
+      <TextField fx:id="tfPvmech" layoutX="412.0" layoutY="27.0" onKeyTyped="#PvmechOnChange"/>
+      <TextField fx:id="tfPab" layoutX="523.0" layoutY="186.0" onKeyTyped="#PabOnChange"/>
+      <TextField fx:id="tfMM" layoutX="523.0" layoutY="250.0" onKeyTyped="#MMOnChange"/>
+      <TextField fx:id="tfnM" layoutX="523.0" layoutY="287.0" onKeyTyped="#nMOnChange"/>
+      <TextField fx:id="tfPvG" layoutX="752.0" layoutY="73.0" onKeyTyped="#PvGOnChange"/>
+      <TextField fx:id="tfEtaG" layoutX="752.0" layoutY="319.0" onKeyTyped="#EtaGOnChange"/>
+      <TextField fx:id="tfi" layoutX="752.0" layoutY="353.0" onKeyTyped="#iOnChange"/>
+      <TextField fx:id="tfPG" layoutX="966.0" layoutY="174.0" onKeyTyped="#PGOnChange"/>
+      <TextField fx:id="tfMG" layoutX="966.0" layoutY="210.0" onKeyTyped="#MGOnChange"/>
+      <TextField fx:id="tfnG" layoutX="966.0" layoutY="248.0" onKeyTyped="#nGOnChange"/>
+      <Label layoutX="792.0" layoutY="199.0" text="Gear" textAlignment="CENTER">
+         <font>
+            <Font size="34.0"/>
+         </font>
+      </Label>
+      <Slider fx:id="slider" layoutX="947.0" layoutY="429.0" prefHeight="14.0" prefWidth="120.0"/>
+   </AnchorPane>
 </VBox>

@@ -1,16 +1,16 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
 
-public class CalculatorStageController {
+public class CalculatorStageController implements Initializable {
 
     @FXML
     public TextField tfnM;
@@ -47,15 +47,20 @@ public class CalculatorStageController {
     @FXML
     public TextField tfPvM;
 
-    @FXML
-    public void initialize() {
-        update();
-    }
-
     ArrayList<TextField> tFList = new ArrayList<>();
 
-    public void Onclear(ActionEvent actionEvent) {
-        update();
+    @FXML
+    public void initialize() {
+        if (tFList.isEmpty()) {
+            tFList.addAll(Arrays.asList(tfnM, tfMM, tfPab, tfPvmech, tfPvel, tfi, tfEtaG, tfnG, tfMG, tfPG, tfEtaM, tfR, tfU, tfPzu, tfI, tfPvG, tfPvM));
+        }
+    }
+
+    public void c(boolean b){
+        tfMM.setDisable(b);
+    }
+
+    public void OnClear(ActionEvent actionEvent) {
         for (TextField tF : tFList) {
             tF.clear();
             tF.setStyle("");
@@ -64,14 +69,8 @@ public class CalculatorStageController {
 
     Watcher w = new Watcher();
 
-    public void update() {
-        if (tFList.isEmpty()) {
-            tFList.addAll(Arrays.asList(tfnM, tfMM, tfPab, tfPvmech, tfPvel, tfi, tfEtaG, tfnG, tfMG, tfPG, tfEtaM, tfR, tfU, tfPzu, tfI, tfPvG, tfPvM));
-        }
-    }
 
     public void update(TextField tF) {
-        update();
 
         tF.setStyle("");
 
@@ -86,7 +85,7 @@ public class CalculatorStageController {
             try {
                 Double.parseDouble(tF.getText());
             } catch (Exception e) {
-                tF.setStyle("-fx-border-color: red; -fx-background-color: rgba(255,0,0,0.5)");
+                tF.setStyle("-fx-border-color: #ff0000; -fx-background-color: rgba(255,0,0,0.5)");
                 w.setBlockTextFields(true);
             }
         }
@@ -168,7 +167,6 @@ public class CalculatorStageController {
     }
 
     public void newFileOnAction(ActionEvent actionEvent) {
-
     }
 
     public void OnCreateProfile(ActionEvent actionEvent) throws IOException {
@@ -181,5 +179,10 @@ public class CalculatorStageController {
 
     public void OnEdit(ActionEvent actionEvent) throws IOException {
         Global.open("ProfilesEditStage");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }

@@ -11,25 +11,15 @@ public class Frame {
     private boolean b = true;
     private static Stage homeStage;
 
-    public Frame(){
-
-    }
-
     public Frame(Stage homeStage) throws IOException {
-
         Frame.homeStage = homeStage;
-
         Parent pane = FXMLLoader.load(getClass().getResource("HomeStage.fxml"));
-
         changeScene(pane);
     }
-    public static void changeScene(Parent pane) throws IOException {
 
+    public static void changeScene(Parent pane){
         VBox vbox = new VBox(pane);
-
         Scene scene = new Scene(vbox);
-
-
         homeStage.setResizable(false);
         homeStage.setScene(scene);
         homeStage.show();
@@ -38,7 +28,4 @@ public class Frame {
     public static void close(){
         homeStage.close();
     }
-
-
-
 }

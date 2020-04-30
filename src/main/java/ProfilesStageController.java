@@ -3,11 +3,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 
 public class ProfilesStageController {
     @FXML
@@ -37,113 +37,103 @@ public class ProfilesStageController {
     @FXML
     public TextField tfWoe;
 
-    private boolean block;
 
-    public void OpenEngineCalculator(ActionEvent actionEvent) throws IOException {
-        Global.open("EngineCalculatorStage");
-    }
+    ArrayList<TextField> tFList = new ArrayList<>();
 
-    public void OnExit(ActionEvent actionEvent) {
-        Global.exit();
+    @FXML
+    public void initialize() {
+
+        btnSave.setDisable(true);
+        btnClear.setDisable(true);
+
+        if (tFList.isEmpty()) {
+            tFList.addAll(Arrays.asList(tfName, tfVdc, tfCrs, tfCrt, tfCc, tfSt, tfSc, tfNls, tfNlc, tfRi, tfWoe));
+        }
     }
 
     public void OnSave(ActionEvent actionEvent) {
-            Profile profile = new Profile(tfName.getText(), Double.parseDouble(tfVdc.getText()), Double.parseDouble(tfCrs.getText()), Double.parseDouble(tfCrt.getText()), Double.parseDouble(tfCc.getText()), Double.parseDouble(tfSt.getText()), Double.parseDouble(tfSc.getText()), Double.parseDouble(tfNls.getText()), Double.parseDouble(tfNlc.getText()), Double.parseDouble(tfRi.getText()), Double.parseDouble(tfWoe.getText()));
-            ProfileList profileList = new ProfileList();
-            profileList.add(profile);
-            profileList.save();
-    }
-
-    ArrayList<TextField> tFList = new ArrayList<TextField>();
-
-    public boolean isEmpty(){
-        boolean b = true;
-        for(TextField tf : tFList){
-            if(!tf.getText().isEmpty()){
-
-                b = false;
-                break;
-            }
-        }
-        return b;
+        Profile profile = new Profile(tfName.getText(), Double.parseDouble(tfVdc.getText()), Double.parseDouble(tfCrs.getText()), Double.parseDouble(tfCrt.getText()), Double.parseDouble(tfCc.getText()), Double.parseDouble(tfSt.getText()), Double.parseDouble(tfSc.getText()), Double.parseDouble(tfNls.getText()), Double.parseDouble(tfNlc.getText()), Double.parseDouble(tfRi.getText()), Double.parseDouble(tfWoe.getText()));
+        ProfileList profileList = new ProfileList();
+        profileList.add(profile);
+        profileList.save();
     }
 
     public void OnClear(ActionEvent actionEvent) {
-        update();
+
         btnSave.setDisable(true);
         btnClear.setDisable(true);
-        for(TextField tF : tFList){
+        for (TextField tF : tFList) {
             tF.clear();
             tF.setStyle("");
         }
     }
 
-    public void update(){
-        if(isEmpty()){
-            btnClear.setDisable(true);
-        }
-        if(tFList.isEmpty()){
-            tFList.addAll(Arrays.asList(tfName,tfVdc,tfCrs,tfCrt,tfCc,tfSt,tfSc,tfNls,tfNlc,tfRi,tfWoe));
-        }
-    }
-    public void update(TextField tF){
+    boolean nameFilled;
+    boolean block;
+    boolean otherFilled;
 
-        block = false;
-        if(!tfName.getText().isEmpty() && !block){
-            btnSave.setDisable(false);
-        }
-        btnClear.setDisable(false);
-        update();
-        tF.setStyle("");
-        if (tF.getText().isEmpty()) {
-            tF.setStyle("");
-        } else {
-            try {
-                Double.parseDouble(tF.getText());
-            } catch (Exception e) {
-                tF.setStyle("-fx-border-color: red; -fx-background-color: rgba(255,0,0,0.5)");
-                block = true;
+    public void update(TextField tF) {
+
+        if (tF.getId().equals("tfName")) {
+            if (!tF.getText().isEmpty()) {
+                btnClear.setDisable(false);
+                nameFilled = true;
+                if (!ProfileList.profileArrayList.isEmpty()) {
+                    for (Profile profile : ProfileList.profileArrayList) {
+                        if (tfName.getText().equals(profile.getName())) {
+                            tfName.setStyle("-fx-border-color: red; -fx-background-color: rgba(255,0,0,0.5)");
+                            btnSave.setDisable(true);
+                            break;
+                        } else {
+                            if (!block) {
+                                btnSave.setDisable(false);
+                            }
+                        }
+                    }
+                } else {
+                    if (!block) {
+                        btnSave.setDisable(false);
+                    }
+                }
+            } else {
+                if(!otherFilled){
+                    btnClear.setDisable(true);
+                }
+                nameFilled = false;
                 btnSave.setDisable(true);
+            }
+        } else {
+            if (!tF.getText().isEmpty()) {
+                otherFilled = true;
+                btnClear.setDisable(false);
+                try {
+                    tF.setStyle("");
+                    Double.parseDouble(tF.getText());
+                    if (nameFilled) {
+                        btnSave.setDisable(false);
+                    }
+                    block = false;
 
+                } catch (Exception e) {
+                    tF.setStyle("-fx-border-color: red; -fx-background-color: rgba(255,0,0,0.5)");
+                    btnSave.setDisable(true);
+                    block = true;
+                }
+            } else {
+                otherFilled = false;
+                if(nameFilled){
+                    btnSave.setDisable(false);
+                }else{
+                    btnClear.setDisable(true);
+                }
+                block = false;
+                tF.setStyle("");
             }
         }
-
     }
 
     public void nameOnChange(KeyEvent keyEvent) {
-        update();
-        for(Profile profile : ProfileList.profileArrayList){
-
-            if(tfName.getText().equals(profile.getName())){
-                tfName.setStyle("-fx-border-color: red; -fx-background-color: rgba(255,0,0,0.5)");
-                block = true;
-                btnSave.setDisable(true);
-                break;
-            }else{
-                tfName.setStyle("");
-                block = false;
-                btnSave.setDisable(false);
-            }
-        }
-
-        if(tfName.getText().isEmpty()){
-            btnSave.setDisable(true);
-        }else if(!block){
-            btnClear.setDisable(false);
-            btnSave.setDisable(false);
-        }
-
-    }
-
-    public void OnRemove(ActionEvent actionEvent) {
-
-    }
-
-    public void OnClicked(MouseEvent mouseEvent) {
-    }
-
-    public void OnTyped(KeyEvent keyEvent) {
-
+        update(tfName);
     }
 
     public void vdcOnChange(KeyEvent keyEvent) {
@@ -183,9 +173,14 @@ public class ProfilesStageController {
     }
 
     public void woeOnChange(KeyEvent keyEvent) {
-    update(tfWoe);
+        update(tfWoe);
     }
 
-    public void OnChange(ActionEvent actionEvent) {
+    public void OpenEngineCalculator(ActionEvent actionEvent) throws IOException {
+        Global.open("EngineCalculatorStage");
+    }
+
+    public void OnExit(ActionEvent actionEvent) {
+        Global.exit();
     }
 }

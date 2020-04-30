@@ -1,5 +1,4 @@
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
 
@@ -12,6 +11,5 @@ public class HomeStageController {
 
     public void OnExit(ActionEvent actionEvent) {
         Global.exit();
-
     }
 }
