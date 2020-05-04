@@ -1,11 +1,7 @@
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Watcher {
@@ -27,7 +23,6 @@ public class Watcher {
     public boolean getBlockStatus() {
         return block;
     }
-
 
     public void addTextField(TextField tF) {
         String id = tF.getId();
@@ -98,29 +93,55 @@ public class Watcher {
 // Verlustleistung muss aus Profil berechnet werden
 // Man braucht Motor Profile: Um Ampere und andere Einheiten zu speichern
 
+
     static HashMap<String, TextField> tfList = new HashMap<>();
+
+    ArrayList<String> dTextFields = new ArrayList<>();
+    public ArrayList<String> aTextFields = new ArrayList<>();
+
+    public ArrayList<String> getDTextFields() {
+        return dTextFields;
+    }
+
+    public ArrayList<String> getATextFields() {
+        return aTextFields;
+    }
+
+    public void statusSwitchTextFields(String tFId, boolean status) { // true means disable
+
+        if (status) {
+            if(!dTextFields.contains(tFId)){
+                dTextFields.add(tFId);
+            }
+            aTextFields.remove(tFId);
+        } else {
+            if(!aTextFields.contains(tFId)) { // UPS da kommt nicht das richtige Text Feld an!
+                aTextFields.add(tFId);
+
+            }
+            dTextFields.remove(tFId);
+        }
+    }
+
+    public void removeTextField(TextField tF) {
+        statusSwitchTextFields(tF.getId(), false);
+        tfList.remove(tF.getId());
+    }
 
     public void URI(TextField tF) {
 
-        FXMLLoader loader = new FXMLLoader();
-        try {
-            loader.setLocation(Watcher.class.getResource("EngineCalculatorStage.fxml"));
-            CalculatorStageController controller = loader.getController();
-            controller.c(true);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-            tfList.put(tF.getId(), tF);
 
-//        if(tfList.containsKey("tfU") && tfList.containsKey("tfI")){
-//
-//        }
-//        if(tfList.containsKey("tfU") && tfList.containsKey("tfR")){
-//
-//        }
-//        if(tfList.containsKey("tfI") && tfList.containsKey("tfR")){
-//
-//        }
+        tfList.put(tF.getId(), tF);
+
+        if (tfList.containsKey("tfU") && tfList.containsKey("tfI")) {
+            statusSwitchTextFields("tfR", true);
+        }
+        if (tfList.containsKey("tfU") && tfList.containsKey("tfR")) {
+            statusSwitchTextFields("tfI", true);
+        }
+        if (tfList.containsKey("tfI") && tfList.containsKey("tfR")) {
+            statusSwitchTextFields("tfU", true);
+        }
     }
 
     public void PowerMotor(TextField tF) {

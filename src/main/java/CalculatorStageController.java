@@ -3,6 +3,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 
-public class CalculatorStageController implements Initializable {
+public class CalculatorStageController {
 
     @FXML
     public TextField tfnM;
@@ -47,37 +49,35 @@ public class CalculatorStageController implements Initializable {
     @FXML
     public TextField tfPvM;
 
+    Watcher w = new Watcher();
     ArrayList<TextField> tFList = new ArrayList<>();
 
     @FXML
     public void initialize() {
         if (tFList.isEmpty()) {
             tFList.addAll(Arrays.asList(tfnM, tfMM, tfPab, tfPvmech, tfPvel, tfi, tfEtaG, tfnG, tfMG, tfPG, tfEtaM, tfR, tfU, tfPzu, tfI, tfPvG, tfPvM));
+            for (TextField tF : tFList) {
+                w.aTextFields.add(tF.getId());
+            }
         }
-    }
-
-    public void c(boolean b){
-        tfMM.setDisable(b);
     }
 
     public void OnClear(ActionEvent actionEvent) {
         for (TextField tF : tFList) {
             tF.clear();
             tF.setStyle("");
+            w.statusSwitchTextFields(tF.getId(), false);
         }
     }
 
-    Watcher w = new Watcher();
-
-
     public void update(TextField tF) {
-
         tF.setStyle("");
 
         w.setBlockTextFields(false);
 
         if (tF.getText().isEmpty()) {
-
+            w.removeTextField(tF);
+            update();
             tF.setStyle("");
             w.setBlockTextFields(false);
 
@@ -91,6 +91,26 @@ public class CalculatorStageController implements Initializable {
         }
         if (!w.getBlockStatus() && tF.getText().length() >= 1) {
             w.addTextField(tF);
+            update();
+        }
+    }
+
+    public void update() {
+        System.out.println("A: " + w.aTextFields.size());
+        System.out.println("D: " + w.dTextFields.size());
+        for (String s : w.getDTextFields()) {
+            for (TextField tF : tFList) {
+                if (tF.getId().equals(s)) {
+                    setDisable(tF, true);
+                }
+            }
+        }
+        for (String s : w.getATextFields()) {
+            for (TextField tF : tFList) {
+                if (tF.getId().equals(s)) {
+                    setDisable(tF, false);
+                }
+            }
         }
     }
 
@@ -181,8 +201,4 @@ public class CalculatorStageController implements Initializable {
         Global.open("ProfilesEditStage");
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
 }
